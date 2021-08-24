@@ -36,7 +36,7 @@ do_bcl2fastq.sh
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=16
 
-
+module load bcl2fastq2/v2.20.0.422-gcb01
 bcl2fastq \
     --runfolder-dir=$PWD/ \
     --output-dir=$PWD/fastqs \
