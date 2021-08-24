@@ -42,7 +42,10 @@ nano do_novaseq2fastq.sh
 #SBATCH --mail-user=alebesc@gmail.com
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mem 15G
-cellranger mkfastq --run=/data/wraycompute/alejo/singlecell/input/210820_A00201R_0483_BHHV7YDRXY --csv=/data/wraycompute/alejo/singlecell/input/Lv_micro_samplesheet.csv --id=Lv_fastq_micro --output-dir=/data/wraycompute/alejo/singlecell/input/
+cellranger mkfastq --run=/data/wraycompute/alejo/singlecell/input/210820_A00201R_0483_BHHV7YDRXY \
+                   --csv=/data/wraycompute/alejo/singlecell/input/Lv_micro_samplesheet.csv \
+                   --id=Lv_fastq_micro \
+                   --output-dir=/data/wraycompute/alejo/singlecell/input/
 
 
 ```
