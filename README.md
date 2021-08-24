@@ -9,6 +9,7 @@ To make sure it has installed:
 #conda activate /data/wraycompute/alejo/aleconda/singlecell
 
 module load cellranger
+module load bcl2fastq2/v2.20.0.422-gcb01
 
 ```
 
