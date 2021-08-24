@@ -17,6 +17,9 @@ conda activate /data/wraycompute/alejo/aleconda/singlecell
 
 cellranger
 
+module load cellranger
+
+
 ```
 
 The output should be similiar to the following:
@@ -38,5 +41,15 @@ Now use the less command to take a look at this file. Use the up and down arrow 
 less sitecheck.txt
 
 We will take a look at the following sections of the sitecheck file to see if they meet the minimum requirements for running Cell Ranger:
+
+----
+
+Download data
+
+```bash
+module load cellranger
+
+```
+
 
 
