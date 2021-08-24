@@ -52,6 +52,8 @@ cellranger mkfastq --run=/data/wraycompute/alejo/singlecell/input/210820_A00201R
 sbatch do_novaseq2fastq.sh
 ```
 
+Create a Genome Reference
+
 
 ```bash
 nano do_ref_genome.sh
