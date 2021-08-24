@@ -24,7 +24,7 @@ ddsclient download -p Massri_7208 input
 Demultiplex NovaSeq Results:
 
 ```bash
-do_bcl2fastq.sh 
+nano do_bcl2fastq.sh 
 #! /bin/bash -l
 
 #SBATCH -J bcl2fastq
@@ -32,7 +32,6 @@ do_bcl2fastq.sh
 #SBATCH --mail-user=alebesc@gmail.com
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mem=64
-#SBATCH --partition=serial
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=16
 
@@ -43,6 +42,19 @@ bcl2fastq \
     --loading-threads 4 \
     --processing-threads 8 \
     --writing-threads 4
+
+
+
+nano do_bcl2fastq.sh 
+#! /bin/bash -l
+#SBATCH -J cellranger2fastq
+#SBATCH -o cellranger2fastq_demux.log
+#SBATCH --mail-user=alebesc@gmail.com
+#SBATCH --mail-type=END,FAIL
+cellranger mkfastq --id=Lv_fastq_micro \ 
+    --run=210820_A00201R_0483_BHHV7YDRXY \
+    --csv=Lv_micro_samplesheet.csv \
+
 
 
 ```
