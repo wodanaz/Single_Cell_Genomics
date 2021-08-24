@@ -36,7 +36,7 @@ module load Anaconda3
 conda activate /data/wraycompute/alejo/aleconda/singlecell
 
 
-cat do_novaseq2fastq.sh
+nano do_novaseq2fastq.sh
 #! /bin/bash -l
 #SBATCH -J cellranger2fastq
 #SBATCH --mail-user=alebesc@gmail.com
@@ -53,6 +53,62 @@ sbatch do_novaseq2fastq.sh
 ```
 
 
+```bash
+nano do_ref_genome.sh
+#! /bin/bash -l
+#SBATCH -J cellranger_genomeref
+#SBATCH --mail-user=alebesc@gmail.com
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mem 15G
+cellranger mkref --genome=L_var_3.0 --fasta=Lvar_scaffolds.fasta --genes=Lvar.final.gtf --nthreads=8 --memgb=32 
+```
+```bash
+sbatch do_ref_genome.sh
+```
+
+
+
+Map into the Lv genome
+
+```bash
+nano do_fastq2counts.sh
+#! /bin/bash -l
+#SBATCH -J fastq2counts
+#SBATCH --mail-user=alebesc@gmail.com
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mem 15G
+cellranger count --id=Lv_7hpf_micro /
+                 --transcriptome=/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 /
+                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv-7hpf-micro /
+                 --sample=Lv_7hpf_micro --expect-cells=3000
+cellranger count --id=Lv-9hpf_micro /
+                 --transcriptome=/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 /
+                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv-9hpf-micro /
+                 --sample=Lv_9hpf_micro  --expect-cells=3000 
+cellranger count --id=Lv_11hpf_micro /
+                 --transcriptome==/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 /
+                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv-11hpf-micro /
+                 --sample=Lv_11hpf_micro --expect-cells=3000 
+cellranger count --id=Lv_13hpf_micro /
+                 --transcriptome==/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 /
+                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv-13hpf-micro /
+                 --sample=Lv_13hpf_micro --expect-cells=3000 
+cellranger count --id=Lv_15hpf_micro /
+                 --transcriptome==/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 /
+                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv-15hpf-micro /
+                 --sample=Lv_15hpf_micro --expect-cells=3000 
+cellranger count --id=Lv_17hpf_micro /
+                 --transcriptome==/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 /
+                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv-17hpf-micro /
+                 --sample=Lv_17hpf_micro --expect-cells=3000 
+                   
+```
+
+
+
+```bash
+sbatch do_fastq2counts.sh
+```
 
 
 
