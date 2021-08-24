@@ -80,28 +80,28 @@ nano do_fastq2counts.sh
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mem 15G
 cellranger count --id=Lv_7hpf_micro /
-                 --transcriptome=/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 /
-                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv_7hpf_micro /
+                 --transcriptome=/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 \
+                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv_7hpf_micro \
                  --sample=Lv_7hpf_micro --expect-cells=3000
 cellranger count --id=Lv-9hpf_micro /
-                 --transcriptome=/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 /
-                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv_9hpf_micro /
+                 --transcriptome=/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 \
+                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv_9hpf_micro \
                  --sample=Lv_9hpf_micro  --expect-cells=3000 
 cellranger count --id=Lv_11hpf_micro /
-                 --transcriptome==/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 /
-                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv_11hpf_micro /
+                 --transcriptome==/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 \
+                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv_11hpf_micro \
                  --sample=Lv_11hpf_micro --expect-cells=3000 
 cellranger count --id=Lv_13hpf_micro /
-                 --transcriptome==/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 /
-                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv_13hpf_micro /
+                 --transcriptome==/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 \
+                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv_13hpf_micro \
                  --sample=Lv_13hpf_micro --expect-cells=3000 
 cellranger count --id=Lv_15hpf_micro /
-                 --transcriptome==/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 /
-                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv_15hpf_micro /
+                 --transcriptome==/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 \
+                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv_15hpf_micro \
                  --sample=Lv_15hpf_micro --expect-cells=3000 
 cellranger count --id=Lv_17hpf_micro /
-                 --transcriptome==/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 /
-                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv_17hpf_micro /
+                 --transcriptome==/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 \
+                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv_17hpf_micro \
                  --sample=Lv_17hpf_micro --expect-cells=3000 
                    
 ```
