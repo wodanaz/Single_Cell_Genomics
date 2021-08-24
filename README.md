@@ -1,15 +1,23 @@
 # Single Cell Genomic
 
 
-To make sure it has installed:
+Create the environment
 
 ```bash
-#module load Anaconda3
-#conda env update --file singlecell.yml --prefix /data/wraycompute/alejo/aleconda/singlecell
-#conda activate /data/wraycompute/alejo/aleconda/singlecell
+nano singlecell.yml
+channels:
+  - bih-cubi
+dependencies:
+  - bcl2fastq2
+```
 
-module load cellranger
-module load bcl2fastq2/v2.20.0.422-gcb01
+load Anaconda3 and create environment
+
+
+```bash
+module load Anaconda3
+conda env update --file singlecell.yml --prefix /data/wraycompute/alejo/aleconda/singlecell
+conda activate /data/wraycompute/alejo/aleconda/singlecell
 
 ```
 
@@ -24,40 +32,27 @@ ddsclient download -p Massri_7208 input
 Demultiplex NovaSeq Results:
 
 ```bash
-nano do_bcl2fastq.sh 
-#! /bin/bash -l
-
-#SBATCH -J bcl2fastq
-#SBATCH -o bcl2fastq_demux.log
-#SBATCH --mail-user=alebesc@gmail.com
-#SBATCH --mail-type=END,FAIL
-#SBATCH --mem=64
-#SBATCH --nodes=1
-#SBATCH --cpus-per-task=16
-
-module load bcl2fastq2/v2.20.0.422-gcb01
-bcl2fastq \
-    --runfolder-dir=$PWD/ \
-    --output-dir=$PWD/fastqs \
-    --loading-threads 4 \
-    --processing-threads 8 \
-    --writing-threads 4
+module load Anaconda3
+conda activate /data/wraycompute/alejo/aleconda/singlecell
 
 
-
-nano do_bcl2fastq.sh 
+cat do_novaseq2fastq.sh
 #! /bin/bash -l
 #SBATCH -J cellranger2fastq
-#SBATCH -o cellranger2fastq_demux.log
 #SBATCH --mail-user=alebesc@gmail.com
 #SBATCH --mail-type=END,FAIL
-cellranger mkfastq --id=Lv_fastq_micro \ 
-    --run=210820_A00201R_0483_BHHV7YDRXY \
-    --csv=Lv_micro_samplesheet.csv \
-
+#SBATCH --mem 15G
+cellranger mkfastq --run=/data/wraycompute/alejo/singlecell/input/210820_A00201R_0483_BHHV7YDRXY --csv=/data/wraycompute/alejo/singlecell/input/Lv_micro_samplesheet.csv --id=Lv_fastq_micro --output-dir=/data/wraycompute/alejo/singlecell/input/
 
 
 ```
+
+
+```bash
+sbatch do_novaseq2fastq.sh
+```
+
+
 
 
 
