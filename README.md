@@ -61,11 +61,14 @@ Create a Genome Reference
 ```bash
 nano do_ref_genome.sh
 #! /bin/bash -l
-#SBATCH -J cellranger_genomeref
+#SBATCH -J genomeref_cr
 #SBATCH --mail-user=alebesc@gmail.com
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mem 15G
-cellranger mkref --genome=L_var_3.0 --fasta=Lvar_scaffolds.fasta --genes=Lvar.final.gtf --nthreads=8 --memgb=32 
+cellranger mkref --genome=L_var_3.0 \
+	               --fasta=/data/wraycompute/alejo/singlecell/input/genome/Lvar_scaffolds.fasta \
+                 --genes=/data/wraycompute/alejo/singlecell/input/genome/Lvar.final.gtf \
+                 --nthreads=8 --memgb=32 
 ```
 ```bash
 sbatch do_ref_genome.sh
