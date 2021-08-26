@@ -79,44 +79,35 @@ sbatch do_ref_genome.sh
 Map into the Lv genome
 
 ```bash
-nano do_fastq2counts.sh
-#! /bin/bash -l
-#SBATCH -J fastq2counts
-#SBATCH --mail-user=alebesc@gmail.com
-#SBATCH --mail-type=END,FAIL
-#SBATCH --mem 15G
-cellranger count --id=Lv_7hpf_micro \
-                 --transcriptome=/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 \
-                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv_7hpf_micro \
-                 --sample=Lv_7hpf_micro --expect-cells=3000
-cellranger count --id=Lv-9hpf_micro \
-                 --transcriptome=/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 \
-                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv_9hpf_micro \
-                 --sample=Lv_9hpf_micro  --expect-cells=3000 
-cellranger count --id=Lv_11hpf_micro \
-                 --transcriptome=/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 \
-                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv_11hpf_micro \
-                 --sample=Lv_11hpf_micro --expect-cells=3000 
-cellranger count --id=Lv_13hpf_micro \
-                 --transcriptome=/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 \
-                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv_13hpf_micro \
-                 --sample=Lv_13hpf_micro --expect-cells=3000 
-cellranger count --id=Lv_15hpf_micro \
-                 --transcriptome=/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 \
-                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv_15hpf_micro \
-                 --sample=Lv_15hpf_micro --expect-cells=3000 
-cellranger count --id=Lv_17hpf_micro \
-                 --transcriptome=/data/wraycompute/alejo/singlecell/input/genome/L_var_3.0 \
-                 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY/Lv_17hpf_micro \
-                 --sample=Lv_17hpf_micro --expect-cells=3000 
-                   
+nano sample.list
+Lv_7hpf_micro
+Lv_9hpf_micro
+Lv_11hpf_micro
+Lv_13hpf_micro
+Lv_15hpf_micro
+Lv_17hpf_micro
 ```
 
+CONTROL O + Yes + CONTROL X 
+	
+Now, lets create multiple batch jobs to run in parallel	
+	
+```bash		 
+for i in `cat sample.list`; do
+echo '#!/usr/bin/env bash' > $i.fastq2counts.sh;
+echo "#SBATCH -N 1" >> $i.fastq2counts.sh;
+echo "#SBATCH -J fq2count.$i" >> $i.fastq2counts.sh;
+echo "#SBATCH --mail-user=alebesc@gmail.com" >> $i.fastq2counts.sh;
+echo "#SBATCH --mail-type=END,FAIL"  >> $i.fastq2counts.sh;
+echo "#SBATCH --mem 15G" >> $i.fastq2counts.sh;
+echo "cellranger count --id=${i} --transcriptome=/gpfs/fs1/data/covid19lab/L_var_3.0 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY --sample=${i} --expect-cells=3000" >> $i.fastq2counts.sh;
+done
 
 
-```bash
-sbatch do_fastq2counts.sh
+for file in *fastq2counts.sh ; do sbatch $file ; done
+                 
 ```
+
 
 
 
