@@ -16,7 +16,7 @@ load Anaconda3 and create environment
 
 ```bash
 module load Anaconda3
-conda env update --file singlecell.yml --prefix /data/wraycompute/alejo/aleconda/singlecell
+conda env create --file singlecell.yml --prefix /data/wraycompute/alejo/aleconda/singlecell
 conda activate /data/wraycompute/alejo/aleconda/singlecell
 
 ```
