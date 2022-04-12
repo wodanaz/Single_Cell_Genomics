@@ -76,7 +76,9 @@ sbatch do_ref_genome.sh
 
 
 
-Map into the Lv genome
+Map into the Lv genome. 
+
+But first, we need to create a list of libraries to loop through
 
 ```bash
 nano sample.list
@@ -88,7 +90,7 @@ Lv_15hpf_micro
 Lv_17hpf_micro
 ```
 
-CONTROL O + Yes + CONTROL X 
+CONTROL O + ENTER + CONTROL X 
 	
 Now, lets create multiple batch jobs to run in parallel	
 	
