@@ -79,7 +79,7 @@ nano do_ref_genome.sh
 #SBATCH --mail-user=alebesc@gmail.com
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mem 15G
-cellranger mkref --genome=L_var_3.0 \
+cellranger mkref --genome=L_var_3_3 \
 	               --fasta=/data/wraycompute/alejo/singlecell/input/genome/Lvar_scaffolds.fasta \
                  --genes=/data/wraycompute/alejo/singlecell/input/genome/Lvar.final.gtf \
                  --nthreads=8 --memgb=32 
