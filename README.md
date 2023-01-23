@@ -1,4 +1,4 @@
-# Single Cell Genomic
+# Single Cell Genomics in Sea Urchins
 
 
 Create the environment
@@ -30,6 +30,20 @@ ddsclient download -p Massri_7208 input
 ```
 
 Demultiplex NovaSeq Results:
+
+```bash
+nano Lv_micro_samplesheet.csv
+Lane,Sample,Index
+*,Lv-6hpf,SI-TT-H6
+*,Lv-8hpf,SI-TT-A7
+*,Lv-10hpf,SI-TT-B7
+*,Lv-12hpf,SI-TT-C7
+*,Lv-14hpf,SI-TT-D7
+*,Lv-16hpf,SI-TT-E7
+*,Lv-18hpf,SI-TT-F7
+*,Lv-20hpf,SI-TT-G7
+```
+
 
 ```bash
 module load Anaconda3
@@ -102,7 +116,7 @@ echo "#SBATCH -J fq2count.$i" >> $i.fastq2counts.sh;
 echo "#SBATCH --mail-user=alebesc@gmail.com" >> $i.fastq2counts.sh;
 echo "#SBATCH --mail-type=END,FAIL"  >> $i.fastq2counts.sh;
 echo "#SBATCH --mem 15G" >> $i.fastq2counts.sh;
-echo "cellranger count --id=${i} --transcriptome=/gpfs/fs1/data/covid19lab/L_var_3.0 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY --sample=${i} --expect-cells=3000" >> $i.fastq2counts.sh;
+echo "cellranger count --id=${i} --transcriptome=/gpfs/fs1/data/covid19lab/L_var_3_3 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY --sample=${i} --expect-cells=3000  `star_parameters="--outFilterMatchNminOverLread 0 --outFilterMatchNminOverLread 0 --outFilterMismatchNoverLmax=0.05 --outFilterMultimapNmax 0"`" >> $i.fastq2counts.sh;
 done
 
 
