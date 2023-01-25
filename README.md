@@ -116,7 +116,7 @@ echo "#SBATCH -J fq2count.$i" >> $i.fastq2counts.sh;
 echo "#SBATCH --mail-user=alebesc@gmail.com" >> $i.fastq2counts.sh;
 echo "#SBATCH --mail-type=END,FAIL"  >> $i.fastq2counts.sh;
 echo "#SBATCH --mem 15G" >> $i.fastq2counts.sh;
-echo "cellranger count --id=${i} --transcriptome=/gpfs/fs1/data/covid19lab/L_var_3_3 --fastqs=/data/wraycompute/alejo/singlecell/input/HHV7YDRXY --sample=${i} --expect-cells=3000  star_parameters=/"--outFilterMatchNminOverLread 0 --outFilterMatchNminOverLread 0 --outFilterMismatchNoverLmax=0.05 --outFilterMultimapNmax 0/"" >> $i.fastq2counts.sh;
+echo "cellranger count --id=${i} --transcriptome=/gpfs/fs1/data/covid19lab/L_var_3_3 --fastqs=/data/wraycompute/alejo/singlecell/AJ/HHV7YDRXY --sample=${i} --expect-cells=3000  star_parameters=/"--outFilterMatchNminOverLread 0 --outFilterMatchNminOverLread 0 --outFilterMismatchNoverLmax=0.05 --outFilterMultimapNmax 0/"" >> $i.fastq2counts.sh;
 done
 
 
