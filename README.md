@@ -125,5 +125,16 @@ for file in *fastq2counts.sh ; do sbatch $file ; done
 ```
 
 
-
+```bash
+for i in `cat sample.list`; do 
+echo '#!/usr/bin/env bash' > $i.fastq2counts.sh; 
+echo "#SBATCH -N 1" >> $i.fastq2counts.sh; 
+echo "#SBATCH -J fq2count.$i" >> $i.fastq2counts.sh; 
+echo "#SBATCH --mail-user=ab620@duke.edu" >> $i.fastq2counts.sh;  
+echo "#SBATCH --mail-type=END,FAIL"  >> $i.fastq2counts.sh; 
+echo "#SBATCH --mem 25G" >> $i.fastq2counts.sh; 
+echo "#SBATCH --cpus-per-task=6 " >> $i.fastq2counts.sh;
+echo 'cellranger count --id=${i} --transcriptome=/data/wraycompute/alejo/butterfly/heliconius/genome_Hmr/H_mel_2.5 --fastqs=/data/wraycompute/alejo/butterfly/sc_data/butterfly_scRNAseq_pilot/H775YDRX3  --sample=${i} --expect-cells=5000 --localcores=6' >> $i.fastq2counts.sh;   
+done 
+```
 
