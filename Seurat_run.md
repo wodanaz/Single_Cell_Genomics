@@ -1,3 +1,14 @@
+
+```bash
+for dir in `cat count_tables/list`; do
+cellranger mat2csv ${dir}/outs/filtered_feature_bc_matrix count_tables/${dir}_anno.csv
+done
+```
+
+
+
+
+```R
 library(Seurat)
 library(sctransform)
 
@@ -139,3 +150,6 @@ print('saved file full')
 
 
 sessionInfo()
+
+
+```
