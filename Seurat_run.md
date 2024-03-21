@@ -6,8 +6,6 @@ done
 ```
 
 
-
-
 ```R
 library(Seurat)
 library(sctransform)
