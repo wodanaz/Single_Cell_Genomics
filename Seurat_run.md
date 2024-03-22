@@ -7,6 +7,9 @@ done
 
 ```bash
 conda activate /data/wraycompute/alejo/conda/Seurat4_3
+mkdir He_6to60mix
+nano He_scAnalysis_6_to_60.R
+
 ```
 
 
