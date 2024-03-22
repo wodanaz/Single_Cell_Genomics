@@ -5,6 +5,11 @@ cellranger mat2csv ${dir}/outs/filtered_feature_bc_matrix count_tables/${dir}_an
 done
 ```
 
+```bash
+conda activate /data/wraycompute/alejo/conda/Seurat4_3
+```
+
+
 
 ```R
 library(Seurat)
