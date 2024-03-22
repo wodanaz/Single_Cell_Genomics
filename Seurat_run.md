@@ -101,3 +101,8 @@ sessionInfo()
 
 
 ```
+
+
+```bash
+sbatch job_rscript.sh
+```
